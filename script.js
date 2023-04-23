@@ -13,7 +13,8 @@ function checkAnswer(questionNumber) {
         result = sumEvenNumbers([1, 2, 3, 4, 5, 6]) === 12;
         break;
       case 4:
-        result = startsWithVowel(["apple", "banana", "orange"]) === ["apple", "orange"];
+        console.log("case",JSON.stringify(startsWithVowel(["apple", "banana", "orange"])))
+        result = JSON.stringify(startsWithVowel(["apple", "banana", "orange"])) === JSON.stringify(["apple", "orange"]);
         break;
       case 5:
         result = areAnagrams("listen", "silent") === true;
@@ -28,7 +29,7 @@ function checkAnswer(questionNumber) {
         result = isDivisibleBy(10, 2) === true;
         break;
       case 9:
-        result = findPalindromes(["racecar", "hello", "level", "world"]) === ["racecar", "level"];
+        result = JSON.stringify(findPalindromes(["racecar", "hello", "level", "world"])) === JSON.stringify(["racecar", "level"]);
         break;
       case 10:
         result = countWords("The quick brown fox jumps over the lazy dog") === 9;
@@ -41,6 +42,14 @@ function checkAnswer(questionNumber) {
   function largerNumber(a, b) {
     // Starter code for Question 1
     // Write your code here
+    // 1 compare a < b
+    // 2 if true return b
+    // 3 else return a
+    if(a<b)return b
+    return a
+
+    // if(a<b)console.log(b)
+    // else console.log(a)
     
   }
   
@@ -53,7 +62,9 @@ function checkAnswer(questionNumber) {
   function startsWithVowel(strings) {
     // Starter code for Question 4
     const vowels = ["a", "e", "i", "o", "u"];
-    const result = [];
+    return strings.filter(word=>{      
+      return vowels.includes(word[0])
+    })
   }
   
   function areAnagrams(str1, str2) {
@@ -75,7 +86,10 @@ function checkAnswer(questionNumber) {
   
   function isDivisibleBy(num1, num2) {
     // Starter code for Question 8
-   
+    // 1: num1 / num2
+    // 2: check remainder
+    // 3: if remainder is 0? return true, else return false
+    return num1 % num2 === 0;
   }
   
   function findPalindromes(strings) {
@@ -85,4 +99,6 @@ function checkAnswer(questionNumber) {
   
   function countWords(str) {
     // Starter code for Question 10    
+    const words = str.split(" ");
+    return words.length;
   }
